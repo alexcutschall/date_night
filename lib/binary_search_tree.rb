@@ -18,23 +18,23 @@ class BinarySearchTree
 
   def insert(score,name)
     if @head == nil
-       @head = new_node
+       @head = Node.new(score,name)
+       @current_node = @head
     else
-        if @current_node.score > new_node.score && @current_node.left == nil
+        if @current_node.score > score && @current_node.left == nil
           @current_node.left = Node.new(score,name)
 
-        elsif @current_node.score < new_node.score && @current_node.right == nil
+        elsif @current_node.score < score && @current_node.right == nil
           @current_node.right = Node.new(score,name)
 
-        elsif @current_node.score > new_node.score && @current_node.left != nil
+        elsif @current_node.score > score && @current_node.left != nil
           @current_node = @current_node.left
-          insert(@current_node.score, @current_node.name)
+          insert(score, name)
 
-        else  @current_node.score < new_node.score && @current_node.right != nil
+        elsif  @current_node.score < score && @current_node.right != nil
           @current_node = @current_node.right
-          insert(@current_node.score, @current_node.name)
+          insert(score, name)
         end
-      # insert(current_node.score, current_node.name)
       end
   end
 
@@ -58,7 +58,6 @@ class BinarySearchTree
    #     return 1
    #   end
    # end
-binding.pry
 end
 
 #I need to add action to the nodes to make THEM do the decisions

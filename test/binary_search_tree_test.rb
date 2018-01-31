@@ -20,6 +20,13 @@ class BinarySearchTreeTest < Minitest::Test
   def test_binary_search_tree_has_an_insert_function_for_head
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    binding.pry
+    tree.insert(98, "Clockwork Orange")
+    # binding.pry
+
+
 
     #assertion as to what the return value is 0
     assert_instance_of Node, tree.head
@@ -36,7 +43,7 @@ class BinarySearchTreeTest < Minitest::Test
     #trees left score is 16
     assert_equal (16), tree.head.left.score
   end
-  
+
   def test_binary_search_tree_can_move_to_the_right
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
