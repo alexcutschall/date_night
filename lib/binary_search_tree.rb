@@ -23,9 +23,11 @@ class BinarySearchTree
     else
         if @current_node.score > score && @current_node.left == nil
           @current_node.left = Node.new(score,name)
+          @current_node = @head
 
         elsif @current_node.score < score && @current_node.right == nil
           @current_node.right = Node.new(score,name)
+          @current_node = @head
 
         elsif @current_node.score > score && @current_node.left != nil
           @current_node = @current_node.left

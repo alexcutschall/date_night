@@ -22,9 +22,12 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
     tree.insert(92, "Sharknado 3")
-    binding.pry
     tree.insert(98, "Clockwork Orange")
-    # binding.pry
+    tree.insert(34, "Hannibal Buress: Comedy Camisado")
+    tree.insert(63, "Meet My Valentine")
+    tree.insert(22, "Experimenter")
+    tree.insert(84, "French Dirty")
+    binding.pry
 
 
 
