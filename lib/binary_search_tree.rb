@@ -17,29 +17,28 @@ class BinarySearchTree
   end
 
   def insert(score,name)
-    new_node = Node.new(score,name)
     if @head == nil
        @head = new_node
+    else
+        if @current_node.score > new_node.score && @current_node.left == nil
+          @current_node.left = Node.new(score,name)
 
-    elsif @head != nil
-        if @head.score > new_node.score && @head.left == nil
-          head.left = new_node
+        elsif @current_node.score < new_node.score && @current_node.right == nil
+          @current_node.right = Node.new(score,name)
 
-        elsif @head.score < new_node.score && @head.right == nil
-          head.right = new_node
-
-        elsif @head.score > new_node.score && @head.left != nil
-          @current_node = head.left
+        elsif @current_node.score > new_node.score && @current_node.left != nil
+          @current_node = @current_node.left
           insert(@current_node.score, @current_node.name)
 
-        else  @head.score < new_node.score && @head.right != nil
-          @current_node = head.right
-          insert(current_node.score, current_node.name)
+        else  @current_node.score < new_node.score && @current_node.right != nil
+          @current_node = @current_node.right
+          insert(@current_node.score, @current_node.name)
         end
+      # insert(current_node.score, current_node.name)
       end
   end
 
-
+#@current_node and @head
    # def include?(number)
    #   if @head.score == number
    #     true
@@ -59,7 +58,7 @@ class BinarySearchTree
    #     return 1
    #   end
    # end
-
+binding.pry
 end
 
 #I need to add action to the nodes to make THEM do the decisions

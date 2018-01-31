@@ -12,10 +12,4 @@ class Node
     @right = nil
     @depth = nil
   end
-
-  def move_left  
-  end
-
-  def move_right
-  end
 end
