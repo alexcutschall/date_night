@@ -141,37 +141,44 @@ end
 
 public
   def leaves(current_node = @head)
-    @leaves = 0
-    if current_node.nil?
-      return @leaves
+    if current_node = nil
+      return 0
     elsif current_node.left == nil && current_node.right == nil
-      return @leaves +=1
-    elsif current_node.left != nil && current_node.right == nil
-      leaves_traverse_left(current_node.left)
-    elsif
-      current_node.left == nil && current__node.right != nil
-      leaves_traverse_right(current_node.right)
-    end
-end
-
-  def leaves_traverse_left(current_node)
-    if current_node.left == nil && current_node.right == nil
-      return @leaves += 1
-    elsif current_node.left != nil && current_node.right == nil
-      leaves_traverse_left(current_node.left)
-    elsif
-      current_node.left == nil && current__node.right != nil
-      leaves_traverse_right(current_node.right)
-    end
-end
-
-  def leaves_traverse_right(current_node)
-    if current_node.left == nil && current_node.right == nil
-      return @leaves += 1
-    elsif current_node.left != nil && current_node.right == nil
-      leaves_traverse_left(current_node.left)
-    elsif
-      current_node.left == nil && current__node.right != nil
-      leaves_traverse_right(current_node.right)
-    end
-end
+      return 1
+    else
+      leaves(current_node.left) + (current_node.right)
+      end
+  end
+#     if current_node.nil?
+#       return @leaves
+#     elsif current_node.left == nil && current_node.right == nil
+#       return @leaves +=1
+#     elsif current_node.left != nil && current_node.right == nil
+#       leaves_traverse_left(current_node.left)
+#     elsif
+#       current_node.left == nil && current__node.right != nil
+#       leaves_traverse_right(current_node.right)
+#     end
+# end
+#
+#   def leaves_traverse_left(current_node)
+#     if current_node.left == nil && current_node.right == nil
+#       return @leaves += 1
+#     elsif current_node.left != nil && current_node.right == nil
+#       leaves_traverse_left(current_node.left)
+#     elsif
+#       current_node.left == nil && current__node.right != nil
+#       leaves_traverse_right(current_node.right)
+#     end
+# end
+#
+#   def leaves_traverse_right(current_node)
+#     if current_node.left == nil && current_node.right == nil
+#       return @leaves += 1
+#     elsif current_node.left != nil && current_node.right == nil
+#       leaves_traverse_left(current_node.left)
+#     elsif
+#       current_node.left == nil && current__node.right != nil
+#       leaves_traverse_right(current_node.right)
+#     end
+# end

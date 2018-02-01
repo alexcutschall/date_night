@@ -109,6 +109,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.depth_of(98)
     assert_equal 2, tree.depth_of(10)
     assert_equal 3, tree.depth_of(5)
+    assert_nil tree.depth_of(23)
   end
 
   def test_binary_search_can_input_a_file
