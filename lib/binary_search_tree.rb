@@ -89,14 +89,15 @@ end
     @numbers.include?(number)
   end
 
-   #
-   # def depth?(depth_number)
-   #   if depth_number = 61
-   #     return 0
-   #   else
-   #     return 1
-   #   end
-   # end
+  def load(file_name)
+    insertions = 0
+    file = File.read(file_name)
+    splitted_file = file.split(", ")
+    insert(splitted_file[0].to_i, splitted_file[1])
+    insertions += 1
+
+  end
 end
 
-#refactor depth to traverse through the tree
+tree = BinarySearchTree.new
+puts tree.load("movies.txt")
