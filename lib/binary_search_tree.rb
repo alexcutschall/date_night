@@ -13,12 +13,14 @@ class BinarySearchTree
 
   def initialize
     @head = nil
+    @numbers = []
   end
 
   def insert(score, name)
     depth = 0
     if @head == nil
        @head = Node.new(score,name)
+       @numbers << @head.score
        @head.depth
     else
        traverse(score, name, @head , depth)
@@ -37,6 +39,7 @@ class BinarySearchTree
     depth += 1
     if current_node.score > score && current_node.left == nil
        current_node.left = Node.new(score,name)
+       @numbers << current_node.left.score
        return depth
 
     else
@@ -49,6 +52,7 @@ class BinarySearchTree
     depth += 1
     if current_node.score < score && current_node.right == nil
       current_node.right = Node.new(score,name)
+      @numbers << current_node.right.score
       return depth
 
     else
@@ -80,16 +84,10 @@ end
       return current_node.score
     end
   end
-  def include?(score, current_node = @head)
-    if current_node.nil?
-      false
-    elsif score == current_node.score
-      true
-    else
-      traverse(score, current_node.score, current_node.name)
-    end
+
+  def include?(number)
+    @numbers.include?(number)
   end
-#use the traverse or another attribute that includes
 
    #
    # def depth?(depth_number)
