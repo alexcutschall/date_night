@@ -117,4 +117,37 @@ class BinarySearchTreeTest < Minitest::Test
     assert 99, tree.load('movies.txt')
   end
 
+  def test_binary_has_height_function
+    tree = BinarySearchTree.new
+    tree.insert(92, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(98, "Clockwork Orange")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(5, "Rubber")
+
+    assert_equal 3, tree.height
+  end
+
+  def test_binary_has_a_leaves_function
+    tree = BinarySearchTree.new
+    tree.insert(92, "Bill & Ted's Excellent Adventure")
+
+    assert_equal (1), tree.leaves
+  end
+
+  # def test_binary_tree_has_a_health_function
+  #   tree.insert(98, "Animals United")
+  #   tree.insert(58, "Armageddon")
+  #   tree.insert(36, "Bill & Ted's Bogus Journey")
+  #   tree.insert(93, "Bill & Ted's Excellent Adventure")
+  #   tree.insert(86, "Charlie's Angels")
+  #   tree.insert(38, "Charlie's Country")
+  #   tree.insert(69, "Collateral Damage")
+  #
+  #   assert_equal [[98,7,100]], tree.health(0)
+  #   assert_equal [[56,8,85]], tree.health(1)
+  #   asser_equal [[36,2,28], [93,3,42]]
+  #
+  # end
+
 end

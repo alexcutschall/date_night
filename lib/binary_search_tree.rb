@@ -124,6 +124,44 @@ end
     splitted_file = file.split(", ")
     insert(splitted_file[0].to_i, splitted_file[1])
     insertions += 1
+  end
 
+  def height(head = @head)
+    return -1 if head.nil?
+    left_head_height = height(head.left)
+    right_head_height = height(head.right)
+
+    if left_head_height > right_head_height
+      return left_head_height + 1
+    else
+      return right_head_height + 1
+    end
+  end
+end
+
+  def leaves(current_node = @head)
+    leaves = 0
+    if current_node.nil?
+      nil
+    elsif current_node.left == nil && current_node.right == nil
+      return leaves +=1
+    if current_node.left == nil && current_node.right != nil
+      leaves_traverse_left(current_node)
+    if
+      leaves_traverse_right(current_node)
+    end
+  end
+end
+end
+
+  def leaves_traverse_left(current_node)
+    if current_node.left != nil
+      leaves(current_node.left)
+  end
+end
+
+  def leaves_traverse_left(current_node)
+    if current_node.right != nil
+      leaves(current_node.right)
   end
 end
