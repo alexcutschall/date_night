@@ -13,45 +13,77 @@ class BinarySearchTree
 
   def initialize
     @head = nil
-    @current_node = nil
+    @depth = 0
   end
 
-  def insert(score,name)
+  def insert(score, name)
     if @head == nil
        @head = Node.new(score,name)
-       @current_node = @head
     else
-        if @current_node.score > score && @current_node.left == nil
-          @current_node.left = Node.new(score,name)
-          @current_node = @head
+       traverse(score,name)
+     end
+   end
 
-        elsif @current_node.score < score && @current_node.right == nil
-          @current_node.right = Node.new(score,name)
-          @current_node = @head
-
-        elsif @current_node.score > score && @current_node.left != nil
-          @current_node = @current_node.left
-          insert(score, name)
-
-        elsif  @current_node.score < score && @current_node.right != nil
-          @current_node = @current_node.right
-          insert(score, name)
-        end
-      end
+  def traverse(score, name = nil, current_node = @head)
+    if current_node.score > score
+       move_left(score, name)
+    else
+       move_right(score, name)
+    end
   end
 
-#@current_node and @head
-   # def include?(number)
-   #   if @head.score == number
-   #     true
-   #   elsif @head.left.score == number
-   #     true
-   #   elsif @head.right.score == number
-   #     true
-   #   else
-   #     false
-   #   end
-   # end
+  def move_left(score, name = nil, current_node = @head)
+    if current_node.score > score && current_node.left == nil
+      current_node.left = Node.new(score,name)
+      #return statement depth
+    else
+      current_node = current_node.left
+      move_left(score, name, current_node)
+    end
+  end
+
+  def move_right(score, name = nil, current_node = @head)
+    if current_node.score < score && current_node.right == nil
+      current_node.right = Node.new(score,name)
+    else
+      current_node = current_node.right
+      move_right(score, name, current_node)
+    end
+  end
+
+  def min
+    if @head.left == nil
+       return @head.score
+    else
+      current_node = @head
+      while current_node.left != nil
+        current_node = current_node.left
+    end
+    return current_node.score
+  end
+end
+
+  def max
+    if @head.right == nil
+      return @head.score
+    else
+      current_node = @head
+      while current_node.right != nil
+        current_node = current_node.right
+      end
+      return current_node.score
+    end
+  end
+
+  # def include?(number)
+  #   if current_node.score == number
+  #     return true
+  #   else
+  #     while current_node.score != number
+  # end
+# end 
+#use the traverse or another attribute that includes
+
    #
    # def depth?(depth_number)
    #   if depth_number = 61
@@ -62,9 +94,4 @@ class BinarySearchTree
    # end
 end
 
-#I need to add action to the nodes to make THEM do the decisions
-  #the node knows whether the left and right are nil
-  #functions move left and move right depending whether
-  #or not they're nil
-#refactor include to go traverse the tree
 #refactor depth to traverse through the tree

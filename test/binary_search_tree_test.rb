@@ -20,18 +20,8 @@ class BinarySearchTreeTest < Minitest::Test
   def test_binary_search_tree_has_an_insert_function_for_head
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    tree.insert(92, "Sharknado 3")
-    tree.insert(98, "Clockwork Orange")
-    tree.insert(34, "Hannibal Buress: Comedy Camisado")
-    tree.insert(63, "Meet My Valentine")
-    tree.insert(22, "Experimenter")
-    tree.insert(84, "French Dirty")
-    binding.pry
 
 
-
-    #assertion as to what the return value is 0
     assert_instance_of Node, tree.head
     assert_equal 61, tree.head.score
     assert_equal "Bill & Ted's Excellent Adventure", tree.head.name
@@ -43,7 +33,6 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(16, "Johnny English")
 
     assert_equal (61), tree.head.score
-    #trees left score is 16
     assert_equal (16), tree.head.left.score
   end
 
@@ -51,42 +40,56 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(92, "Sharknado 3")
+    # tree.insert(16, "Johnny English")
+    # tree.insert(98, "Clockwork Orange")
+    # tree.insert(10, "Superman v Batman")
+    # tree.insert(1, "Percy Jackson")
 
     assert_equal (61), tree.head.score
     assert_equal (92), tree.head.right.score
   end
 
-  # def test_binary_search_tree_had_an_include_function
+  def test_can_find_a_min
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(80, "Grand Budapest Hotel")
+    tree.insert(1, "Rubber")
+
+    assert_equal (1), tree.min
+  end
+
+  def test_can_find_max
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(80, "Grand Budapest Hotel")
+    tree.insert(5, "Rubber")
+    tree.insert(99, "Dr. Strangelove")
+
+    assert_equal (99), tree.max
+  end
+
+  # def test_binary_search_tree_has_an_include_function
   #   tree = BinarySearchTree.new
   #   tree.insert(61, "Bill & Ted's Excellent Adventure")
-  #   tree.insert(16, "Johnny English")
-  #   tree.insert(92, "Sharknado 3")
   #
-  #   assert tree.include?(92)
-  #   refute tree.include?(10)
+  #   assert tree.include?(61)
   # end
+  #
+  #
   #
   # def test_binary_tree_has_depth
   #   tree = BinarySearchTree.new
   #   tree.insert(61, "Bill & Ted's Excellent Adventure")
   #   tree.insert(16, "Johnny English")
   #   tree.insert(92, "Sharknado 3")
+  #   tree.insert(10, "")
   #
   #   assert_equal 0, tree.head.depth
   #   assert_equal 1, tree.head.left.depth
   #   assert_equal 1, tree.head.right.depth
-  # end
-
-  # def test_tree_can_keep_adding
-  #   tree = BinarySearchTree.new
-  #   tree.insert(61, "Bill & Ted's Excellent Adventure")
-  #   tree.insert(16, "Johnny English")
-  #   tree.insert(92, "Sharknado 3")
-  #   tree.insert(34, "Hannibal Buress: Comedy Camisado")
-  #   tree.insert(63, "Meet My Valentine")
-  #   tree.insert(22, "Experimenter")
-  #   tree.insert(84, "French Dirty")
-  #
-  #
-  # end
+  
 end
