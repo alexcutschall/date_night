@@ -29,16 +29,11 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_binary_tree_can_track_depth
     tree = BinarySearchTree.new
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    tree.insert(92, "Sharknado")
-    tree.insert(10, "Superman v Batman")
-    tree.insert(98, "Clockwork Orange")
-    binding.pry
 
-    assert_equal 0, tree.head.depth
-    assert_equal 1, tree.head.left.depth
-    assert_equal 1, tree.head.right.depth
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 1, tree.insert(16, "Johnny English")
+    assert_equal 1, tree.insert(92, "Sharknado")
+    assert_equal 2, tree.insert(98, "Clockwork Orange")
   end
 
   def test_binary_search_tree_can_move_to_the_left
@@ -54,10 +49,6 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(92, "Sharknado 3")
-    # tree.insert(16, "Johnny English")
-    # tree.insert(98, "Clockwork Orange")
-    # tree.insert(10, "Superman v Batman")
-    # tree.insert(1, "Percy Jackson")
 
     assert_equal (61), tree.head.score
     assert_equal (92), tree.head.right.score
@@ -88,13 +79,15 @@ class BinarySearchTreeTest < Minitest::Test
 
 
 
-  # def test_binary_search_tree_has_an_include_function
-  #   tree = BinarySearchTree.new
-  #   tree.insert(61, "Bill & Ted's Excellent Adventure")
-  #
-  #   assert tree.include?(61)
-  # end
-  #
+  def test_binary_search_tree_has_an_include_function
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+
+    assert tree.include?(61)
+    assert tree.include?(16)
+  end
+
   #
   #
   # def test_binary_tree_has_depth

@@ -13,47 +13,47 @@ class BinarySearchTree
 
   def initialize
     @head = nil
-    @depth = 0
   end
 
   def insert(score, name)
+    depth = 0
     if @head == nil
        @head = Node.new(score,name)
-       @head.depth = 0
+       @head.depth
     else
-       traverse(score,name)
+       traverse(score, name, @head , depth)
      end
    end
 
-  def traverse(score, name, current_node = @head)
+  def traverse(score, name, current_node, depth = 0)
     if current_node.score > score
-       move_left(score, name)
+       move_left(score, name, current_node, depth)
     else
-       move_right(score, name)
+       move_right(score, name, current_node, depth)
     end
   end
 
-  def move_left(score, name, current_node = @head)
+  def move_left(score, name, current_node, depth = 0)
+    depth += 1
     if current_node.score > score && current_node.left == nil
-      current_node.left = Node.new(score,name)
-      current_node.left.depth += 1
+       current_node.left = Node.new(score,name)
+       return depth
 
     else
       current_node = current_node.left
-      current_node.depth += 1
-      move_left(score, name, current_node)
+      move_left(score, name, current_node, depth)
     end
   end
 
-  def move_right(score, name, current_node = @head)
+  def move_right(score, name, current_node, depth)
+    depth += 1
     if current_node.score < score && current_node.right == nil
       current_node.right = Node.new(score,name)
-      current_node.right.depth += 1
+      return depth
 
     else
       current_node = current_node.right
-      current_node.depth += 1
-      move_right(score, name, current_node)
+      move_right(score, name, current_node, depth)
     end
   end
 
@@ -80,14 +80,15 @@ end
       return current_node.score
     end
   end
-
-  # def include?(number)
-  #   if current_node.score == number
-  #     return true
-  #   else
-  #     while current_node.score != number
-  # end
-# end
+  def include?(score, current_node = @head)
+    if current_node.nil?
+      false
+    elsif score == current_node.score
+      true
+    else
+      traverse(score, current_node.score, current_node.name)
+    end
+  end
 #use the traverse or another attribute that includes
 
    #
