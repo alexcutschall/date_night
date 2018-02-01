@@ -132,6 +132,14 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(92, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
+
+    assert_equal (1), tree.leaves
+  end
+
+  def test_binary_has_a_leaves_function_that_goes_beyond_1
+    tree = BinarySearchTree.new
+    tree.insert(92, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
     tree.insert(98, "Clockwork Orange")
 
     assert_equal (2), tree.leaves

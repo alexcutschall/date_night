@@ -144,31 +144,31 @@ public
     leaves = 0
     if current_node.nil?
       return leaves
-    else current_node.left == nil && current_node.right == nil
+    elsif current_node.left == nil && current_node.right == nil
       return leaves +=1
-      leaves(current_node)
+    elsif current_node.left == nil && current_node.right != nil
+      leaves_traverse_left(current_node.right, leaves)
+    else
+      leaves_traverse_right(current_node.left, leaves)
     end
-    if current_node.left == nil && current_node.right != nil
-      leaves_traverse_left(current_node, leaves)
-    end
-    if
-      leaves_traverse_right(current_node, leaves)
-    end
-
 end
 
   def leaves_traverse_left(current_node, leaves)
     if current_node.left == nil && current_node.right == nil
       return leaves += 1
-    else
+    elsif current_node.left != nil
       leaves(current_node.left)
+    elsif current_node.right != nil
+      leaves(current_node.right)
   end
 end
 
   def leaves_traverse_right(current_node, leaves)
     if current_node.left == nil && current_node.right == nil
       return leaves += 1
-    else
+    elsif current_node.left != nil
+      leaves(current_node.left)
+    elsif current_node.right != nil
       leaves(current_node.right)
   end
 end
