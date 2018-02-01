@@ -17,47 +17,47 @@ class BinarySearchTree
   end
 
   def insert(score, name)
-    depth = 0
+    @depth = 0
     if @head == nil
        @head = Node.new(score,name)
        @numbers << @head.score
-       @head.depth
+       @depth
     else
-       traverse(score, name, @head , depth)
+       traverse(score, name, @head)
      end
    end
 
-  def traverse(score, name, current_node, depth = 0)
+  def traverse(score, name, current_node)
     if current_node.score > score
-       move_left(score, name, current_node, depth)
+       move_left(score, name, current_node)
     else
-       move_right(score, name, current_node, depth)
+       move_right(score, name, current_node)
     end
   end
 
-  def move_left(score, name, current_node, depth = 0)
-    depth += 1
+  def move_left(score, name, current_node)
+    @depth =+1
     if current_node.score > score && current_node.left == nil
        current_node.left = Node.new(score,name)
        @numbers << current_node.left.score
-       return depth
+       @depth
 
     else
       current_node = current_node.left
-      move_left(score, name, current_node, depth)
+      move_left(score, name, current_node)
     end
   end
 
-  def move_right(score, name, current_node, depth)
-    depth += 1
+  def move_right(score, name, current_node)
+    @depth += 1
     if current_node.score < score && current_node.right == nil
       current_node.right = Node.new(score,name)
       @numbers << current_node.right.score
-      return depth
+      return @depth
 
     else
       current_node = current_node.right
-      move_right(score, name, current_node, depth)
+      move_right(score, name, current_node)
     end
   end
 
