@@ -13,14 +13,12 @@ class BinarySearchTree
 
   def initialize
     @head = nil
-    @numbers = []
   end
 
   def insert(score, name)
     @depth = 0
     if @head == nil
        @head = Node.new(score,name)
-       @numbers << @head.score
        @depth
     else
        traverse(score, name, @head)
@@ -39,9 +37,7 @@ class BinarySearchTree
     @depth =+1
     if current_node.score > score && current_node.left == nil
        current_node.left = Node.new(score,name)
-       @numbers << current_node.left.score
-       @depth
-
+       return @depth
     else
       current_node = current_node.left
       move_left(score, name, current_node)
@@ -52,7 +48,6 @@ class BinarySearchTree
     @depth += 1
     if current_node.score < score && current_node.right == nil
       current_node.right = Node.new(score,name)
-      @numbers << current_node.right.score
       return @depth
 
     else
@@ -85,8 +80,42 @@ end
     end
   end
 
-  def include?(number)
-    @numbers.include?(number)
+  def include?(number, current_node = @head)
+    if current_node.nil?
+      false
+    elsif current_node.score == number
+      true
+    else
+      include_traverse(number, current_node)
+  end
+end
+
+  def include_traverse(number, current_node)
+    if number > current_node.score
+      include?(number, current_node.right)
+    else number < current_node.score
+      include?(number, current_node.left)
+    end
+  end
+
+  def depth_of(number, current_node = @head, depth = 0)
+    if current_node.nil?
+      nil
+    elsif current_node.score == number
+      return depth
+    else
+      depth_of_traverse(number,current_node, depth)
+    end
+  end
+
+  def depth_of_traverse(number, current_node, depth)
+    if current_node.score > number
+       depth += 1
+       depth_of(number, current_node.left, depth)
+    else current_node.score < number
+       depth += 1
+       depth_of(number, current_node.right, depth)
+     end
   end
 
   def load(file_name)
@@ -98,6 +127,3 @@ end
 
   end
 end
-
-tree = BinarySearchTree.new
-puts tree.load("movies.txt")

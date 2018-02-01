@@ -96,9 +96,25 @@ class BinarySearchTreeTest < Minitest::Test
     assert tree.include?(99)
   end
 
+  def test_binary_tree_has_a_depth_of_function
+    tree = BinarySearchTree.new
+    tree.insert(92, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(98, "Clockwork Orange")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(5, "Rubber")
+
+    assert_equal 0, tree.depth_of(92)
+    assert_equal 1, tree.depth_of(16)
+    assert_equal 1, tree.depth_of(98)
+    assert_equal 2, tree.depth_of(10)
+    assert_equal 3, tree.depth_of(5)
+  end
+
   def test_binary_search_can_input_a_file
     tree = BinarySearchTree.new
 
     assert 99, tree.load('movies.txt')
   end
+
 end
