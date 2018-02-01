@@ -27,6 +27,20 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal "Bill & Ted's Excellent Adventure", tree.head.name
   end
 
+  def test_binary_tree_can_track_depth
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado")
+    tree.insert(10, "Superman v Batman")
+    tree.insert(98, "Clockwork Orange")
+    binding.pry
+
+    assert_equal 0, tree.head.depth
+    assert_equal 1, tree.head.left.depth
+    assert_equal 1, tree.head.right.depth
+  end
+
   def test_binary_search_tree_can_move_to_the_left
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -72,6 +86,8 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal (99), tree.max
   end
 
+
+
   # def test_binary_search_tree_has_an_include_function
   #   tree = BinarySearchTree.new
   #   tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -91,5 +107,5 @@ class BinarySearchTreeTest < Minitest::Test
   #   assert_equal 0, tree.head.depth
   #   assert_equal 1, tree.head.left.depth
   #   assert_equal 1, tree.head.right.depth
-  
+
 end

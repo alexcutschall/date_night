@@ -10,6 +10,6 @@ class Node
     @name = name
     @left = nil
     @right = nil
-    @depth = nil
+    @depth = 0
   end
 end
