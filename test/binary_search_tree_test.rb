@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/binary_search_tree.rb'
 require './lib/node.rb'
-require 'pry'
 
 class BinarySearchTreeTest < Minitest::Test
   def test_binary_search_tree_exists

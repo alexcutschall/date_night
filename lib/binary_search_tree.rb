@@ -1,13 +1,4 @@
-require 'pry'
 require './lib/node.rb'
-#make a list
-#list has a root, this will be the @head attribute (This can either be created right off the back or not)
-#change the head attribute to the root that everything will be based off of
-#head. if head has already been created, evalutate based off the head
-#move left and move right method
-#When you start to see code repeating itself
-#build this out for a couple levels and then use the node to delegate
-
 class BinarySearchTree
   attr_reader :head
 
@@ -149,36 +140,3 @@ public
       leaves(current_node.left) + (current_node.right)
       end
   end
-#     if current_node.nil?
-#       return @leaves
-#     elsif current_node.left == nil && current_node.right == nil
-#       return @leaves +=1
-#     elsif current_node.left != nil && current_node.right == nil
-#       leaves_traverse_left(current_node.left)
-#     elsif
-#       current_node.left == nil && current__node.right != nil
-#       leaves_traverse_right(current_node.right)
-#     end
-# end
-#
-#   def leaves_traverse_left(current_node)
-#     if current_node.left == nil && current_node.right == nil
-#       return @leaves += 1
-#     elsif current_node.left != nil && current_node.right == nil
-#       leaves_traverse_left(current_node.left)
-#     elsif
-#       current_node.left == nil && current__node.right != nil
-#       leaves_traverse_right(current_node.right)
-#     end
-# end
-#
-#   def leaves_traverse_right(current_node)
-#     if current_node.left == nil && current_node.right == nil
-#       return @leaves += 1
-#     elsif current_node.left != nil && current_node.right == nil
-#       leaves_traverse_left(current_node.left)
-#     elsif
-#       current_node.left == nil && current__node.right != nil
-#       leaves_traverse_right(current_node.right)
-#     end
-# end
