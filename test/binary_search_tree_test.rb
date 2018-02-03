@@ -170,8 +170,17 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(70, "Dr. Strangelove")
     tree.insert(80, "Cars 2")
     tree.insert(69, "Great Train Robbery")
-  
+
     assert_equal (4), tree.leaves
   end
 
+
+  def test_binary_search_tree_leaves_has_a_sort_function
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    binding.pry
+  assert_equal [{"Johnny English" => 16},
+                {"Bill & Ted's Excellent Adventure" => 61}], tree.sort
+  end
 end

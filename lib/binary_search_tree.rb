@@ -134,6 +134,19 @@ end
     end
   end
 
+def sort(current_node = @head, sorted = [])
+  return sorted if current_node.nil?
+
+  sort(current_node.left, sorted)
+  sorted << {current_node.name => current_node.score}
+
+  sort(current_node.right, sorted)
+  sorted << {current_node.name => current_node.score}
+
+  sorted
+end
+
+
 def leaves(current_node = @head)
 leaves_count = 0
   if current_node.nil?
