@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/binary_search_tree.rb'
 require './lib/node.rb'
+require 'pry'
 
 class BinarySearchTreeTest < Minitest::Test
   def test_binary_search_tree_exists
@@ -24,6 +25,19 @@ class BinarySearchTreeTest < Minitest::Test
     assert_instance_of Node, tree.head
     assert_equal 61, tree.head.score
     assert_equal "Bill & Ted's Excellent Adventure", tree.head.name
+  end
+
+  def test_binary_search_tree_can_insert_more_than_5
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(5, "Rubber")
+    tree.insert(70, "Dr. Strangelove")
+    tree.insert(80, "Cars 2")
+    tree.insert(69, "Great Train Robbery")
+
+    assert_equal (80), tree.head.right.right.score
   end
 
   def test_binary_tree_can_track_depth
@@ -117,6 +131,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert 99, tree.load('movies.txt')
   end
 
+
   def test_binary_has_height_function
     tree = BinarySearchTree.new
     tree.insert(92, "Bill & Ted's Excellent Adventure")
@@ -136,7 +151,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal (1), tree.leaves
   end
 
-  def test_binary_has_a_leaves_function_that_goes_beyond_1
+  def test_binary_has_a_leaves_function_can_hand_2
     tree = BinarySearchTree.new
     tree.insert(92, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -145,19 +160,18 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal (2), tree.leaves
   end
 
-  # def test_binary_tree_has_a_health_function
-  #   tree.insert(98, "Animals United")
-  #   tree.insert(58, "Armageddon")
-  #   tree.insert(36, "Bill & Ted's Bogus Journey")
-  #   tree.insert(93, "Bill & Ted's Excellent Adventure")
-  #   tree.insert(86, "Charlie's Angels")
-  #   tree.insert(38, "Charlie's Country")
-  #   tree.insert(69, "Collateral Damage")
-  #
-  #   assert_equal [[98,7,100]], tree.health(0)
-  #   assert_equal [[56,8,85]], tree.health(1)
-  #   asser_equal [[36,2,28], [93,3,42]]
-  #
-  # end
+  def test_binary_search_tree_leaves_can_handle_4
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(20, "Grand Budapest Hotel")
+    tree.insert(5, "Rubber")
+    tree.insert(70, "Dr. Strangelove")
+    tree.insert(80, "Cars 2")
+    tree.insert(69, "Great Train Robbery")
+  
+    assert_equal (4), tree.leaves
+  end
 
 end

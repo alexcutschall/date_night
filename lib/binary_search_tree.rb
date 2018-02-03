@@ -8,7 +8,7 @@ class BinarySearchTree
 
   def insert(score, name)
     @depth = 0
-    if @head == nil
+    if @head.nil?
        @head = Node.new(score,name)
        @depth
     else
@@ -19,32 +19,37 @@ class BinarySearchTree
   def traverse(score, name, current_node)
     if current_node.score > score
        move_left(score, name, current_node)
-    else
+    elsif current_node.score < score
        move_right(score, name, current_node)
     end
   end
 
   def move_left(score, name, current_node)
-    @depth =+1
-    if current_node.score > score && current_node.left == nil
+    if current_node.left.nil?
        current_node.left = Node.new(score,name)
-       return @depth
+       return @depth += 1
     else
-      current_node = current_node.left
-      move_left(score, name, current_node)
+      node_travel_direction(score,name, current_node)
     end
   end
 
   def move_right(score, name, current_node)
-    @depth += 1
-    if current_node.score < score && current_node.right == nil
+    if current_node.right.nil?
       current_node.right = Node.new(score,name)
-      return @depth
-
+      return @depth += 1
     else
-      current_node = current_node.right
-      move_right(score, name, current_node)
+      node_travel_direction(score, name, current_node)
     end
+  end
+
+  def node_travel_direction(score, name, current_node)
+    @depth += 1
+      if score < current_node.score
+        current_node = current_node.left
+      else
+        current_node = current_node.right
+    end
+       traverse(score, name, current_node)
   end
 
   def min
@@ -93,7 +98,7 @@ end
     if current_node.nil?
       nil
     elsif current_node.score == number
-      return depth
+      depth
     else
       depth_of_traverse(number,current_node, depth)
     end
@@ -118,25 +123,27 @@ end
   end
 
   def height(head = @head)
-    return -1 if head.nil?
+    return-1 if head.nil?
     left_head_height = height(head.left)
     right_head_height = height(head.right)
 
     if left_head_height > right_head_height
-      return left_head_height + 1
+      left_head_height + 1
     else
-      return right_head_height + 1
+      right_head_height + 1
     end
   end
-end
 
-public
-  def leaves(current_node = @head)
-    if current_node = nil
-      return 0
-    elsif current_node.left == nil && current_node.right == nil
-      return 1
-    else
-      leaves(current_node.left) + (current_node.right)
-      end
+def leaves(current_node = @head)
+leaves_count = 0
+  if current_node.nil?
+     leaves_count = 0
+
+  elsif current_node.left.nil? && current_node.right.nil?
+    leaves_count += 1
+
+  else
+    leaves(current_node.left) + leaves(current_node.right)
   end
+ end
+end
