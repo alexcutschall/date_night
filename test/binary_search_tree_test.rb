@@ -179,8 +179,26 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
-    binding.pry
+
   assert_equal [{"Johnny English" => 16},
                 {"Bill & Ted's Excellent Adventure" => 61}], tree.sort
   end
+
+  def test_binary_search_tree_leaves_can_handle_4
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(10, "Batman v Superman")
+    tree.insert(20, "Grand Budapest Hotel")
+    tree.insert(5, "Rubber")
+    tree.insert(70, "Dr. Strangelove")
+    tree.insert(80, "Cars 2")
+    tree.insert(69, "Great Train Robbery")
+binding.pry
+    assert_equal [{"Rubber" => 5},{"Batman v Superman" => 10},
+      {"Johnny English" => 16},{"Grand Budapest Hotel" => 20},
+      {"Bill & Ted's Excellent Adventure" => 61},
+      {"Great Train Robbery" => 69},{"Dr. Strangelove" => 70},
+      {"Cars 2" => 80}], tree.sort
+    end
 end
